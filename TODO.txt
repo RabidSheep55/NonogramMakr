@@ -1,0 +1,8 @@
+TO DO:
+  - Fix number positioning when number of digits > 1
+    - Hint column needs an incrementing offset
+    - Hint row just needs centering
+  - Add a lil watermark
+  - Pass in function parameters as command line arguments
+    - Maybe make two versions, one for user and one for testing
+  - Add support for black and white, or even color images (not necessarily BMP)
