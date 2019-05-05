@@ -6,3 +6,4 @@ TO DO:
   - Pass in function parameters as command line arguments
     - Maybe make two versions, one for user and one for testing
   - Add support for black and white, or even color images (not necessarily BMP)
+  - Add a list of required modules, and make it easy for people to use it
