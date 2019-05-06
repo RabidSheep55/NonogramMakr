@@ -6,4 +6,5 @@ TO DO:
   - Pass in function parameters as command line arguments (DONE)
     - Maybe make two versions, one for user and one for testing (No need, just make them optional)
   - Add support for black and white, or even color images (not necessarily BMP)
-  - Add a list of required modules, and make it easy for people to use it
+  - Add a list of required modules, and make it easy for people to use it (DONE)
+  - Give the option to generate the solution in a separate folder
