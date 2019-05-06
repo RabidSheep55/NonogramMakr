@@ -13,6 +13,7 @@ list(filter(None, list))
 """
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
+import sys
 
 
 def pr(A):
@@ -149,23 +150,14 @@ def genPuzzle(hintCol, hintRow, res, output):
 
     #Save image!
 #    image.show()
-    image.save(output)
-    
+    image.save(output)  
     del draw
 
 
-def main():
-    print('')
-    print("Welcome to the first and ever Image to Nonogram Converter!")
-    print("To use this script, you'll first need a monochromatic BMP image...")
-    path = str(input("BW Image path: "))
-    output = str(input("Output Puzzle path: "))
-    res = int(input("Desired 'resolution': "))
-    print("")
-    
+def main(path, output, res):   
     print("Converting Image...")
     image = getImage(path)
-    pr(image)
+#    pr(image)
     print("Image Converted")
     
     print("Generating Hints...")
@@ -180,4 +172,24 @@ def main():
     
     
 if __name__ == "__main__": 
-    main() 
+    
+    if len(sys.argv) == 1:
+        print('')
+        print("Welcome to the first and ever Image to Nonogram Converter!")
+        print("To use this script, you'll first need a monochromatic BMP image...")
+        path = str(input("BW Image path: "))
+        output = str(input("Output Puzzle path: "))
+        res = int(input("Desired 'resolution': "))
+        print("")
+        
+        main(path, output, res)
+        
+    elif len(sys.argv) == 4:
+        path = str(sys.argv[1])
+        output = str(sys.argv[2])
+        res = int(sys.argv[3])
+        
+        main(path, output, res) 
+        
+    else:
+        print("Invalid number of arguments -_-")
