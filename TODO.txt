@@ -1,9 +1,9 @@
 TO DO:
-  - Fix number positioning when number of digits > 1
+  - Fix number positioning when number of digits > 1 (DONE)
     - Hint column needs an incrementing offset
     - Hint row just needs centering
   - Add a lil watermark
-  - Pass in function parameters as command line arguments
-    - Maybe make two versions, one for user and one for testing
+  - Pass in function parameters as command line arguments (DONE)
+    - Maybe make two versions, one for user and one for testing (No need, just make them optional)
   - Add support for black and white, or even color images (not necessarily BMP)
   - Add a list of required modules, and make it easy for people to use it
