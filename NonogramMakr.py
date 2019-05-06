@@ -160,6 +160,29 @@ def genPuzzle(hintCol, hintRow, res, output):
 #    image.show()
     image.save(output)  
     del draw
+    
+    # We are going to need these to generate the solution later
+    return hoff, woff
+
+
+def genSolution(output, image, res, hoff, woff):
+    solution = Image.open(output)
+    solution.show()
+    draw = ImageDraw.Draw(solution)
+    
+    #Traverse through the image array and fill in the squares
+    for i in range(len(image)):
+        for j in range(len(image[0])):
+            if image[i][j] == 0:
+                x0 = woff + j * res
+                y0 = hoff + i * res
+                x1 = x0 + res
+                y1 = y0 + res
+                draw.rectangle([x0, y0, x1, y1], fill=0, outline=None)
+    
+    solution.save("Solution.jpg")
+                
+    
 
 
 def main(path, output, res):   
@@ -175,7 +198,11 @@ def main(path, output, res):
     print("Hints Generated")
     
     print("Making Final puzzle...")
-    genPuzzle(hintCol, hintRow, res, output)
+    hoff, woff = genPuzzle(hintCol, hintRow, res, output)
+    print("Final Puzzle made")
+    
+    print("Making solution..")
+    genSolution(output, image, res, hoff, woff)
     print("All done!")
     
     
