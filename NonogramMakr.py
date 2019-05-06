@@ -14,6 +14,8 @@ list(filter(None, list))
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 import sys
+import re
+import os
 
 global fontfile
 fontfile = "OpenSans-Regular.ttf"
@@ -167,7 +169,6 @@ def genPuzzle(hintCol, hintRow, res, output):
 
 def genSolution(output, image, res, hoff, woff):
     solution = Image.open(output)
-    solution.show()
     draw = ImageDraw.Draw(solution)
     
     #Traverse through the image array and fill in the squares
@@ -180,9 +181,14 @@ def genSolution(output, image, res, hoff, woff):
                 y1 = y0 + res
                 draw.rectangle([x0, y0, x1, y1], fill=0, outline=None)
     
-    solution.save("Solution.jpg")
-                
+    solFolder = re.findall("^.*(?=\.)", output)[0] + "-solution"
     
+    try:
+        os.makedirs(solFolder)
+    except FileExistsError:       
+        pass
+    
+    solution.save(solFolder + "\Solution.jpg")
 
 
 def main(path, output, res):   
