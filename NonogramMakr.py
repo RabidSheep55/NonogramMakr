@@ -124,7 +124,7 @@ def genPuzzle(hintCol, hintRow, res, output):
         draw.line(line, fill=50, width=int(res/15))
         
     # Add the numbers
-    font = ImageFont.truetype("OpenSans-Regular.ttf", int(res/1.5))
+    font = ImageFont.truetype("OpenSans-Regular.ttf", int(res/1.7))
     
         #Hint Column
     for i in range(h):
@@ -133,7 +133,8 @@ def genPuzzle(hintCol, hintRow, res, output):
 #            print("Trying to lay out hints", hints)
             yPos = hoff + res*i
             for j in range(len(hints)-1, -1, -1):
-                xPos = woff - (j+1)*res + res/2.6   # The + res/2.6 makes sure the number is centered on a grid, I would need to learn more about fonts and typeface to determine this value exactly based on res             
+                d = len(str(hints[j]))
+                xPos = woff - (j+1)*res + res/(2.6)               
 #                print("Trying to draw", hints[j], "at position", (xPos, yPos) )
                 draw.text((xPos, yPos), str(hints[j]), 0, font=font)
                 
@@ -142,8 +143,11 @@ def genPuzzle(hintCol, hintRow, res, output):
         hints = hintRow[i]
         if hints:
 #            print("Trying to lay out hints", hints)
-            xPos = woff + res*i + res/2.6
+            
             for j in range(len(hints)-1, -1, -1):
+                d = len(str(hints[j]))
+                xPos = woff + res*i + res/1.8 - (res/6)*d # The d stuff makes sure the number is centered on a grid, I would need to learn more about fonts and typeface to determine this value exactly based on res
+                print("corrected based on d=", d)
                 yPos = hoff - (j+1)*res                
 #                print("Trying to draw", hints[j], "at position", (xPos, yPos) )
                 draw.text((xPos, yPos), str(hints[j]), 0, font=font)
