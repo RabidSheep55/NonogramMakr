@@ -15,6 +15,9 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 import sys
 
+global fontfile
+fontfile = "OpenSans-Regular.ttf"
+
 
 def pr(A):
     for line in A:
@@ -124,7 +127,7 @@ def genPuzzle(hintCol, hintRow, res, output):
         draw.line(line, fill=50, width=int(res/15))
         
     # Add the numbers
-    font = ImageFont.truetype("OpenSans-Regular.ttf", int(res/1.7))
+    font = ImageFont.truetype(fontfile, int(res/1.7))
     
         #Hint Column
     for i in range(h):
